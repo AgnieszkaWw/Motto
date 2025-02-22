@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form {
+  width: 75%;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 223, 186, 0.5), rgba(34, 139, 34, 0.4));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 70%;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.button {
+  width: 25%;
+  padding: 10px;
+  background: linear-gradient(to bottom, #9b7bff, #ffffff);  /* Gradient od fioletowego do białego */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(to bottom, #7f5fdb, #e1bee7);  /* Ciemniejszy gradient przy najechaniu */
+}
+
+.addButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #6edc9b;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.addButton:hover {
+  background-color: #53b07d;
+}

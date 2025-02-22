@@ -1,0 +1,40 @@
+{
+  "Mottos": [
+    {
+      "id": 1,
+      "title": "Tatry, pełne surowych szczytów, przypominają, że życie to wędrówka pełna wyzwań."
+    },
+    {
+      "id": 2,
+      "title": "Jednak nawet w najcięższych momentach, jak krokusy rosnące na zboczach gór, możemy znaleźć siłę, by wzrosnąć."
+    },
+    {
+      "id": 3,
+      "title": "Każdy krok w górę to pokonywanie własnych ograniczeń, a każdy krokus to znak, że po trudnych chwilach nadchodzi piękno."
+    },
+    {
+      "id": 4,
+      "title": "W Tatrach, jak w życiu, nie ma niczego łatwego, ale z odwagą i nadzieją możemy rozkwitnąć tam, gdzie najmniej się tego spodziewamy."
+    },
+    {
+      "id": 1740237837694,
+      "title": "Dzisiaj jest piękny słoneczny dzień",
+      "completed": false
+    },
+    {
+      "id": 1740251320968,
+      "title": "Jak się masz",
+      "completed": false
+    },
+    {
+      "id": 1740251333622,
+      "title": "ile masz lat",
+      "completed": false
+    },
+    {
+      "id": 1740251375483,
+      "title": "fajnie jest byc młodym",
+      "completed": false
+    }
+  ]
+}
