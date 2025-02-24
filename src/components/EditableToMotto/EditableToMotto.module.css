@@ -1,8 +1,8 @@
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;                      /* Ustawienie elementów w jednej linii */
+    justify-content: flex-start;         /* Rozpoczęcie od lewej strony */
+    align-items: center;                /* Wyrównanie do środka */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 223, 186, 0.5), rgba(34, 139, 34, 0.4)); /* Gradient tła */
     padding: 10px 15px;
     margin: 10px 0;
@@ -20,65 +20,50 @@
     transform: translateY(2px); /* Efekt przy kliknięciu */
   }
   
-  /* Kontener dla ikonki, gdzie będzie wyświetlany obrazek */
-  .inputContainer {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  /* Styl dla miniatury (ikony) */
   .thumbnail {
-    width: 60px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%; /* Okrągły kształt miniaturki */
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    width: 70px;                          /* Szerokość obrazka */
+    height: 60px;                         /* Wysokość obrazka */
+    object-fit: cover;                    /* Dopasowanie obrazka */
+    border-radius: 50%;                   /* Okrągły kształt miniaturki */
+    margin-right: 50px;                   /* Odstęp 50px między obrazkiem a tekstem */
+    margin-left: 20px;                    /* Margines boczny 20px po lewej stronie */
+    transition: transform 0.3s ease;      /* Animacja powiększenia miniaturki */
   }
   
   .thumbnail:hover {
-    transform: scale(1.1); /* Powiększenie miniaturki przy najechaniu */
+    transform: scale(1.1);                /* Powiększenie miniaturki przy najechaniu */
   }
   
-  /* Styl dla pola edycji napisu (input) */
-  input[type="text"] {
-    font-size: 1rem;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    outline: none;
-    width: 100%;
-  }
-  
-  /* Styl dla napisu (title) */
-  span {
+  .mottoText {
     font-size: 1.2rem;
     font-style: italic;
     color: #333;
     transition: color 0.3s ease;
   }
   
-  span:hover {
+  .mottoText:hover {
     color: #4caf50; /* Zmiana koloru tekstu po najechaniu */
   }
   
-  /* Styl dla przycisku */
   .buttonContainer {
-    margin-left: auto; /* Przesuwa przyciski na prawo */
-    display: flex;
-    gap: 5px;
+    display: flex;               /* Przyciski w jednej linii */
+    gap: 10px;                   /* Odstęp między przyciskami */
+    margin-left: auto;           /* Przesunięcie przycisków na prawą stronę */
+  }
+  
+  .editButton,
+  .deleteButton {
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
   }
   
   .editButton {
     background: linear-gradient(to bottom, #7f5fdb, #e1bee7);
     border: none;
     color: white;
-    padding: 5px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
   }
   
   .editButton:hover {
@@ -89,13 +74,10 @@
     background-color: white;
     border: 2px solid red;
     color: red;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
   }
   
   .deleteButton:hover {
     background-color: red;
     color: white;
   }
+  

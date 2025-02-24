@@ -1,4 +1,4 @@
-export default function toMottoReducer(state, action) {
+export default function toMottoReducer(state = [], action) {
   switch (action.type) {
     case "FETCH":
       return action.mottos;

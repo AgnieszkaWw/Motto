@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: flex-start; /* Ustawienie elementów w jednej linii */
+    align-items: center; /* Wyrównanie do środka */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 223, 186, 0.5), rgba(34, 139, 34, 0.4)); /* Gradient tła */
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Efekt po najechaniu */
+  }
+  
+  .container:active {
+    transform: translateY(2px); /* Efekt przy kliknięciu */
+  }
+  
+  .link {
+    margin-left: auto; /* Przesunięcie kontenera z linkiem na prawą stronę */
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #fff; /* Jasny fioletowy kolor pasujący do stylu */
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #7f5fdb, #e1bee7); /* Gradient tła */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Animacja dla tła i transformacji */
+  }
+  
+  .link:hover {
+    background: linear-gradient(to bottom, #7f5fdb, #cd52e2); /* Zmiana gradientu przy najechaniu */
+    color: #fff; /* Zmiana koloru tekstu na biały */
+    transform: scale(1.05); /* Efekt powiększenia */
+  }
+  
+  .link:active {
+    transform: translateY(2px); /* Efekt przy kliknięciu */
+  }
+  
