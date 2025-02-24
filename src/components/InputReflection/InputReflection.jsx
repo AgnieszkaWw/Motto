@@ -3,13 +3,10 @@ import styles from "./InputReflection.module.css";
 
 const getCurrentDate = () => {
   const today = new Date();
-  const daysOfWeek = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
-  const day = today.getDate().toString().padStart(2, "0");
-  const month = (today.getMonth() + 1).toString().padStart(2, "0");
   const year = today.getFullYear();
-  const dayOfWeek = daysOfWeek[today.getDay()];
-
-  return `${day}-${month}-${year} - ${dayOfWeek}`;
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const day = today.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`; // Data w formacie yyyy-MM-dd
 };
 
 export default function InputReflection() {
@@ -25,7 +22,7 @@ export default function InputReflection() {
   }, []);
 
   const handleSave = () => {
-    const date = getCurrentDate(); 
+    const date = getCurrentDate(); // Pobieramy datę
 
     const newReflection = {
       date: date,
@@ -75,8 +72,6 @@ export default function InputReflection() {
         <button onClick={handleSave} className={`${styles.button} ${styles.saveButton}`}>Zapisz</button>
         <button onClick={handleClear} className={`${styles.button} ${styles.clearButton}`}>Wyczyść</button>
       </div>
-
-      
     </div>
   );
 }
