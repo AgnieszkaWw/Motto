@@ -17,7 +17,6 @@ export default function InputReflection() {
   const [input1] = useState("W tym momencie czuję...");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
-
   const handleSave = () => {
     const date = new Date();
     const formattedDate =
@@ -28,27 +27,28 @@ export default function InputReflection() {
       }) +
       " - " +
       date.toLocaleString("pl-PL", { weekday: "long" });
-
-    // Pobieramy istniejące refleksje z localStorage
-    const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
-
+  
     // Tworzymy obiekt refleksji z datą i dwoma wprowadzonymi refleksjami
     const newReflection = {
       date: formattedDate,
       reflection1: input2,
       reflection2: input3,
     };
-
+  
+    // Pobieramy wszystkie zapisane refleksje z localStorage
+    const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
+  
     // Dodajemy nową refleksję do listy
     savedReflections.push(newReflection);
-
+  
     // Zapisujemy całą listę refleksji w localStorage
     localStorage.setItem("reflections", JSON.stringify(savedReflections));
-
+  
     alert("Dane zapisane!");
   };
-
-  const handleClear = () => {
+  
+  
+    const handleClear = () => {
     setInput2("");
     setInput3("");
   };

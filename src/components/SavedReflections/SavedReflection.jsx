@@ -7,22 +7,16 @@ const SavedReflections = () => {
   const navigate = useNavigate();  // Hook do nawigacji
 
   useEffect(() => {
-    const savedReflections = [];
-
-    // Odczytujemy wszystkie elementy z localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.includes('-')) {  // Zakładając, że klucze mają format daty (np. 25-03-2025 - wtorek)
-        const reflectionData = JSON.parse(localStorage.getItem(key));
-        savedReflections.push(reflectionData);
-      }
-    }
-
-    // Sortowanie danych po dacie (od najnowszych)
+    // Odczytujemy wszystkie zapisane refleksje z localStorage
+    const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
+  
+    // Sortujemy refleksje po dacie (od najnowszych)
     savedReflections.sort((a, b) => new Date(b.date) - new Date(a.date));
-
+  
     setReflections(savedReflections);
   }, []);
+  
+  
 
   // Funkcje do obsługi przycisków
   const handleGoHome = () => {
