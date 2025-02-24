@@ -1,80 +1,91 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SavedReflection.module.css";
 
+const ITEMS_PER_PAGE = 4; // Ilość refleksji na stronę
+
 const SavedReflections = () => {
-  const [reflections, setReflections] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);  // Strona, którą aktualnie wyświetlamy
-  const [reflectionsPerPage] = useState(5);  // Liczba refleksji na stronie
+  const [reflections, setReflections] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
-
-    // Sortowanie danych po dacie (od najnowszych)
     savedReflections.sort((a, b) => new Date(b.date) - new Date(a.date));
-
     setReflections(savedReflections);
   }, []);
 
-  // Obliczamy indeksy refleksji, które mają być wyświetlane na obecnej stronie
-  const indexOfLastReflection = currentPage * reflectionsPerPage;
-  const indexOfFirstReflection = indexOfLastReflection - reflectionsPerPage;
-  const currentReflections = reflections.slice(indexOfFirstReflection, indexOfLastReflection);
+  const handleDelete = (indexToDelete) => {
+    const updatedReflections = reflections.filter((_, index) => index !== indexToDelete);
 
-  // Funkcja do przejścia na następną stronę
-  const nextPage = () => {
-    if (currentPage < Math.ceil(reflections.length / reflectionsPerPage)) {
+    if (updatedReflections.length === 0) {
+      localStorage.removeItem("reflections");
+      setReflections(null);
+    } else {
+      localStorage.setItem("reflections", JSON.stringify(updatedReflections));
+      setReflections(updatedReflections);
+    }
+  };
+
+  const handleGoHome = () => navigate("/");
+  const handleGoGratitude = () => navigate("/gratitude");
+
+  // Obliczanie paginacji
+  const totalPages = reflections ? Math.ceil(reflections.length / ITEMS_PER_PAGE) : 0;
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedReflections = reflections ? reflections.slice(startIndex, endIndex) : [];
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages - 1) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Funkcja do przejścia na poprzednią stronę
-  const prevPage = () => {
-    if (currentPage > 1) {
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
-  };
-
-  // Funkcja do zmiany strony na konkretną
-  const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
   };
 
   return (
     <div className={styles.container}>
       <h2>Zapisane refleksje</h2>
-      {reflections.length === 0 ? (
-        <p>Brak zapisanych refleksji.</p>
-      ) : (
+
+      {paginatedReflections.length > 0 && (
         <ul className={styles.reflectionList}>
-          {currentReflections.map((reflection, index) => (
+          {paginatedReflections.map((reflection, index) => (
             <li key={index} className={styles.reflectionItem}>
               <h3>{reflection.date}</h3>
               <p><strong>Refleksja 1:</strong> {reflection.reflection1}</p>
               <p><strong>Refleksja 2:</strong> {reflection.reflection2}</p>
+              <button
+                onClick={() => handleDelete(index)}
+                className={styles.deleteButton}
+              >
+                Usuń
+              </button>
             </li>
           ))}
         </ul>
       )}
 
-      {/* Przyciski nawigacyjne po prawej stronie */}
-      <div className={styles.buttonsContainer}>
-        <button onClick={prevPage} className={`${styles.button} ${styles.homeButton}`}>Poprzednia strona</button>
-        <button onClick={nextPage} className={`${styles.button} ${styles.addReflectionButton}`}>Następna strona</button>
-      </div>
-
       {/* Paginacja */}
-      <div className={styles.pagination}>
-        {Array.from({ length: Math.ceil(reflections.length / reflectionsPerPage) }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => goToPage(index + 1)}
-            className={`${styles.pageButton} ${currentPage === index + 1 ? styles.activePage : ""}`}
-          >
-            {index + 1}
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button onClick={handlePrevPage} disabled={currentPage === 0} className={styles.pageButton}>
+            Poprzednia strona
           </button>
-        ))}
+          <span>Strona {currentPage + 1} z {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages - 1} className={styles.pageButton}>
+            Następna strona
+          </button>
+        </div>
+      )}
+
+      <div className={styles.buttonsContainer}>
+        <button onClick={handleGoHome} className={`${styles.button} ${styles.homeButton}`}>Powrót na stronę główną</button>
+        <button onClick={handleGoGratitude} className={`${styles.button} ${styles.addReflectionButton}`}>Dodaj refleksję</button>
       </div>
     </div>
   );

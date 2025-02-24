@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./InputReflection.module.css";
 
-// Funkcja do uzyskania bieżącej daty w formacie "dd-mm-yyyy - dzień tygodnia"
 const getCurrentDate = () => {
   const today = new Date();
   const daysOfWeek = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
@@ -17,42 +16,43 @@ export default function InputReflection() {
   const [input1] = useState("W tym momencie czuję...");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
+  const [savedReflections, setSavedReflections] = useState([]);
+
+  // Załaduj zapisane refleksje po załadowaniu komponentu
+  useEffect(() => {
+    const reflections = JSON.parse(localStorage.getItem("reflections")) || [];
+    setSavedReflections(reflections);
+  }, []);
+
   const handleSave = () => {
-    const date = new Date();
-    const formattedDate =
-      date.toLocaleDateString("pl-PL", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      }) +
-      " - " +
-      date.toLocaleString("pl-PL", { weekday: "long" });
-  
-    // Tworzymy obiekt refleksji z datą i dwoma wprowadzonymi refleksjami
+    const date = getCurrentDate(); 
+
     const newReflection = {
-      date: formattedDate,
+      date: date,
       reflection1: input2,
       reflection2: input3,
     };
-  
+
     // Pobieramy wszystkie zapisane refleksje z localStorage
-    const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
-  
-    // Dodajemy nową refleksję do listy
-    savedReflections.push(newReflection);
-  
+    const updatedReflections = [...savedReflections, newReflection];
+
     // Zapisujemy całą listę refleksji w localStorage
-    localStorage.setItem("reflections", JSON.stringify(savedReflections));
-  
+    localStorage.setItem("reflections", JSON.stringify(updatedReflections));
+
+    // Aktualizujemy stan komponentu
+    setSavedReflections(updatedReflections);
+
+    // Resetujemy pola
+    setInput2("");
+    setInput3("");
+
     alert("Dane zapisane!");
   };
-  
-  
-    const handleClear = () => {
+
+  const handleClear = () => {
     setInput2("");
     setInput3("");
   };
-
 
   return (
     <div className={styles.container}>
@@ -75,6 +75,8 @@ export default function InputReflection() {
         <button onClick={handleSave} className={`${styles.button} ${styles.saveButton}`}>Zapisz</button>
         <button onClick={handleClear} className={`${styles.button} ${styles.clearButton}`}>Wyczyść</button>
       </div>
+
+      
     </div>
   );
 }
