@@ -1,51 +1,27 @@
-import  { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './GratitudePage.module.css';
-import headerImage from '../../assets/mountaains.jpg';
+import headerImage from '../../assets/mountains.webp';
+import InputReflection from '../InputReflection/InputReflection';
 
 const GratitudePage = () => {
-  const [clouds, setClouds] = useState([
-    { id: 1, text: "W tym momencie czuję, jak spokój wypełnia przestrzeń, a cały świat staje się prostszy i bardziej harmonijny. To uczucie lekkości i radości, jakby każda troska opadała, a serce bije w rytmie pełnym spokoju. Cudowne uczucie ulgi i odprężenia." },
-  ]);
+  const navigate = useNavigate(); // Hook do nawigacji
 
-  const addCloud = () => {
-    if (clouds.length < 10) {
-      setClouds([...clouds, { id: clouds.length + 1, text: '' }]);
-    }
-  };
-
-  const removeCloud = (id) => {
-    setClouds(clouds.filter(cloud => cloud.id !== id));
-  };
-
-  const handleChange = (id, newText) => {
-    setClouds(clouds.map(cloud => cloud.id === id ? { ...cloud, text: newText } : cloud));
+  const handleBack = () => {
+    navigate(-1);
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pageContainer}>
       <header className={styles.headerImage}>
         <img src={headerImage} alt="Tatry" />
       </header>
-      <main>
+      <main className={styles.mainContent}>
         <p className={styles.mainText}>
           Zamknij oczy, uśmiechnij się i po prostu poczuj, jak każda chwila staje się lżejsza. Jakie pozytywne uczucie pojawia się w tym momencie?
         </p>
-        <div className={styles.cloudsContainer}>
-          {clouds.map(cloud => (
-            <div key={cloud.id} className={styles.cloud}>
-              <textarea
-                value={cloud.text}
-                onChange={(e) => handleChange(cloud.id, e.target.value)}
-                placeholder={cloud.id === 1 ? "" : "Za co jesteś wdzięczny?"}
-                rows={4}
-                className={styles.cloudInput}
-              />
-              <button onClick={() => removeCloud(cloud.id)} className={styles.removeBtn}>Usuń</button>
-            </div>
-          ))}
-        </div>
-        <button onClick={addCloud} className={styles.addBtn}>Dodaj chmurkę</button>
+        <InputReflection />
       </main>
+      <button onClick={handleBack} className={styles.backButton}>Powrót</button> 
     </div>
   );
 };

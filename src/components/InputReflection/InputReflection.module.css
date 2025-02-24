@@ -1,0 +1,74 @@
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: linear-gradient(to bottom, #fbe4ef, #ffcd90);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: linear-gradient(to right, #ffffff, #f0f0f0); 
+  color: #4d4d4d;
+  font-family: 'Georgia', serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input:focus {
+  border-color: #9b59b6;
+  background: linear-gradient(to right, #fde0f9, #f0c9ff);
+  outline: none;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ffcd90, #ffeaa7);
+    color: #4d4d4d;
+    border: none;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  button:hover {
+    background: linear-gradient(to right, #ffeaa7, #fbe4ef);
+    cursor: pointer;
+  }
+
+.saveButton {
+  background: linear-gradient(to right, #9b59b6, #6a11cb); 
+  color: #fff;
+}
+
+.saveButton:hover {
+  background: linear-gradient(to right, #8e44ad, #5a08a0);
+  transform: translateY(-2px);
+}
+
+.clearButton {
+  background: linear-gradient(to right, #e74c3c, #ff6b6b); 
+  color: #fff;
+}
+
+.clearButton:hover {
+  background: linear-gradient(to right, #c0392b, #ff4b4b);
+  transform: translateY(-2px);
+}

@@ -6,22 +6,22 @@
     overflow: hidden;
   }
   
-  /* Główny obrazek (CROCUS_IMG) */
+  
   .crocusHeader img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   
-  /* Kontener dla miniatur */
+  
   .thumbnails {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Odstęp między miniaturkami */
+    gap: 10px; 
     margin-top: 20px;
   }
   
-  /* Miniaturki obrazków */
+ 
   .thumbnail {
     width: 60px;
     height: 40px;
@@ -31,7 +31,7 @@
     transition: transform 0.3s ease;
   }
   
-  /* Efekt powiększenia miniaturki po najechaniu */
+  
   .thumbnail:hover {
     transform: scale(1.1);
   }

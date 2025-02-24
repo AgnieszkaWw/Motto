@@ -17,7 +17,7 @@ export default function List({
             deleteToMotto={deleteToMotto}
             toggleToMotto={toggleToMotto}
             editToMotto={editToMotto}
-            changeHeaderImage={changeHeaderImage} // Przekaż funkcję dalej
+            changeHeaderImage={changeHeaderImage} 
           />
         </li>
       ))}

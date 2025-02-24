@@ -28,7 +28,7 @@
 .button {
   width: 25%;
   padding: 10px;
-  background: linear-gradient(to bottom, #9b7bff, #ffffff);  /* Gradient od fioletowego do białego */
+  background: linear-gradient(to bottom, #9b7bff, #ffffff);  
   color: white;
   font-size: 16px;
   border: none;
@@ -37,7 +37,7 @@
 }
 
 .button:hover {
-  background: linear-gradient(to bottom, #7f5fdb, #e1bee7);  /* Ciemniejszy gradient przy najechaniu */
+  background: linear-gradient(to bottom, #7f5fdb, #e1bee7);  
 }
 
 .addButton {

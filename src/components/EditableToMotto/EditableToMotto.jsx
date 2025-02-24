@@ -7,18 +7,18 @@ export default function EditableToMotto({ toMotto, deleteToMotto, toggleToMotto,
   if (!toMotto) return null; 
   const handleImageHover = () => {
     const newImage = getRandomImage();
-    changeHeaderImage(newImage); // Wywołaj funkcję zmieniającą obrazek
+    changeHeaderImage(newImage); 
   };
   
 
   return (
     <div className={styles.container}>
-      {/* Obrazek losowy, po najechaniu zmienia obrazek w nagłówku */}
+      {}
       <img
         src={getRandomImage()}
         alt="Random"
         className={styles.thumbnail}
-        onMouseEnter={handleImageHover} // Funkcja wywoływana po najechaniu
+        onMouseEnter={handleImageHover} 
       />
 
       <span
@@ -29,7 +29,7 @@ export default function EditableToMotto({ toMotto, deleteToMotto, toggleToMotto,
         {toMotto.title}
       </span>
 
-      {/* Kontener dla przycisków */}
+      
       <div className={styles.buttonContainer}>
         <button
           className={styles.editButton}
