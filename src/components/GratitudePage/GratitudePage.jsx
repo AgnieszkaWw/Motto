@@ -9,7 +9,9 @@ const GratitudePage = () => {
   const handleBack = () => {
     navigate(-1);
   };
-
+  const handleViewReflections = () => {
+    navigate('/saved-reflections');
+  };
   return (
     <div className={styles.pageContainer}>
       <header className={styles.headerImage}>
@@ -22,6 +24,7 @@ const GratitudePage = () => {
         <InputReflection />
       </main>
       <button onClick={handleBack} className={styles.backButton}>Powrót</button> 
+      <button onClick={handleViewReflections} className={styles.viewButton}>Zobacz zapisane refleksje</button>
     </div>
   );
 };

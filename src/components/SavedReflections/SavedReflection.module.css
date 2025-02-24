@@ -1,0 +1,73 @@
+.container {
+    padding: 20px;
+    background: linear-gradient(135deg, #F4A300, #F6D02F); /* Ciepły żółty do musztardowego */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h2 {
+    color: #8B5A2B; /* Ciepły brązowy do tekstu */
+    margin-bottom: 20px;
+  }
+  
+  .reflectionList {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .reflectionItem {
+    background-color: rgba(255, 255, 255, 0.9); /* Jaśniejszy i delikatniejszy odcień tła */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reflectionItem h3 {
+    margin-top: 0;
+    color: #C19A6B; /* Kolor daty w cieplejszym brązie z nutą złota */
+  }
+  
+  .buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 20px;
+    top: 20%;
+    gap: 15px;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+  }
+  
+  .homeButton {
+    background: linear-gradient(135deg, #D2B97D, #F4A300); /* Stonowane żółto-pomarańczowe */
+  }
+  
+  .addReflectionButton {
+    background: linear-gradient(135deg, #F6D02F, #D2B97D); /* Jasnożółty do ciemniejszego musztardowego */
+  }
+  
+  .homeButton:hover {
+    background-color: #F29F00; /* Ciepły pomarańczowy */
+  }
+  
+  .addReflectionButton:hover {
+    background-color: #C6A500; /* Ciemniejszy odcień musztardowego */
+  }
+  

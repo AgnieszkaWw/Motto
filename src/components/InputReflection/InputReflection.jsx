@@ -1,23 +1,58 @@
 import { useState } from "react";
 import styles from "./InputReflection.module.css";
 
+// Funkcja do uzyskania bieżącej daty w formacie "dd-mm-yyyy - dzień tygodnia"
+const getCurrentDate = () => {
+  const today = new Date();
+  const daysOfWeek = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+  const day = today.getDate().toString().padStart(2, "0");
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const year = today.getFullYear();
+  const dayOfWeek = daysOfWeek[today.getDay()];
+
+  return `${day}-${month}-${year} - ${dayOfWeek}`;
+};
+
 export default function InputReflection() {
   const [input1] = useState("W tym momencie czuję...");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
 
   const handleSave = () => {
-    localStorage.setItem("reflection1", input2);
-    localStorage.setItem("reflection2", input3);
+    const date = new Date();
+    const formattedDate =
+      date.toLocaleDateString("pl-PL", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }) +
+      " - " +
+      date.toLocaleString("pl-PL", { weekday: "long" });
+
+    // Pobieramy istniejące refleksje z localStorage
+    const savedReflections = JSON.parse(localStorage.getItem("reflections")) || [];
+
+    // Tworzymy obiekt refleksji z datą i dwoma wprowadzonymi refleksjami
+    const newReflection = {
+      date: formattedDate,
+      reflection1: input2,
+      reflection2: input3,
+    };
+
+    // Dodajemy nową refleksję do listy
+    savedReflections.push(newReflection);
+
+    // Zapisujemy całą listę refleksji w localStorage
+    localStorage.setItem("reflections", JSON.stringify(savedReflections));
+
     alert("Dane zapisane!");
   };
 
   const handleClear = () => {
     setInput2("");
     setInput3("");
-    localStorage.removeItem("reflection1");
-    localStorage.removeItem("reflection2");
   };
+
 
   return (
     <div className={styles.container}>
