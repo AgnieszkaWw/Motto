@@ -70,4 +70,25 @@
   .addReflectionButton:hover {
     background-color: #C6A500; /* Ciemniejszy odcień musztardowego */
   }
+  .pagination {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
   
+  .pageButton {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .pageButton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .activePage {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+  }
