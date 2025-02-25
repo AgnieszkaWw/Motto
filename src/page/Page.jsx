@@ -6,7 +6,8 @@ export default function Page() {
   return (
     <div>
       <Layout />
-      <Link to='gratitude' className={style.link}>Dodaj swoją listę wdzięczności</Link>
+      <Link to='/gratitude' className={style.link}>Dodaj swoją listę wdzięczności</Link>
+      <Link to='/saved-reflections' className={style.link}>Lista wdzięczności</Link>
       </div>
   )
 }

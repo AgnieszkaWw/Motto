@@ -6,7 +6,7 @@ const getCurrentDate = () => {
   const year = today.getFullYear();
   const month = (today.getMonth() + 1).toString().padStart(2, "0");
   const day = today.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`; // Data w formacie yyyy-MM-dd
+  return `${year}-${month}-${day}`;
 };
 
 export default function InputReflection() {
@@ -15,14 +15,13 @@ export default function InputReflection() {
   const [input3, setInput3] = useState("");
   const [savedReflections, setSavedReflections] = useState([]);
 
-  // Załaduj zapisane refleksje po załadowaniu komponentu
   useEffect(() => {
     const reflections = JSON.parse(localStorage.getItem("reflections")) || [];
     setSavedReflections(reflections);
   }, []);
 
   const handleSave = () => {
-    const date = getCurrentDate(); // Pobieramy datę
+    const date = getCurrentDate();
 
     const newReflection = {
       date: date,
@@ -30,16 +29,11 @@ export default function InputReflection() {
       reflection2: input3,
     };
 
-    // Pobieramy wszystkie zapisane refleksje z localStorage
     const updatedReflections = [...savedReflections, newReflection];
 
-    // Zapisujemy całą listę refleksji w localStorage
     localStorage.setItem("reflections", JSON.stringify(updatedReflections));
 
-    // Aktualizujemy stan komponentu
     setSavedReflections(updatedReflections);
-
-    // Resetujemy pola
     setInput2("");
     setInput3("");
 
@@ -54,20 +48,8 @@ export default function InputReflection() {
   return (
     <div className={styles.container}>
       <input type="text" value={input1} readOnly className={styles.input} />
-      <input
-        type="text"
-        value={input2}
-        onChange={(e) => setInput2(e.target.value)}
-        placeholder="Podziel się swoimi odczuciami..."
-        className={styles.input}
-      />
-      <input
-        type="text"
-        value={input3}
-        onChange={(e) => setInput3(e.target.value)}
-        placeholder="Podziel się swoimi odczuciami..."
-        className={styles.input}
-      />
+      <input type="text" value={input2} onChange={(e) => setInput2(e.target.value)} placeholder="Podziel się swoimi odczuciami..." className={styles.input} />
+      <input type="text" value={input3} onChange={(e) => setInput3(e.target.value)} placeholder="Podziel się swoimi odczuciami..." className={styles.input} />
       <div className={styles.buttonsContainer}>
         <button onClick={handleSave} className={`${styles.button} ${styles.saveButton}`}>Zapisz</button>
         <button onClick={handleClear} className={`${styles.button} ${styles.clearButton}`}>Wyczyść</button>

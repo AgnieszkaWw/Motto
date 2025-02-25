@@ -11,8 +11,8 @@ root.render(
   <Router>
     <Routes>
       <Route path="/" element={<Page />} />
-      <Route path="/gratitude" element={<GratitudePage />} />
-      <Route path="/saved-reflections" element={<SavedReflections />} />
+      <Route path="/gratitude" element={<GratitudePage key='gratitude' />} />
+      <Route path="/saved-reflections" element={<SavedReflections key='saved-reflections' />} />
     </Routes>
   </Router>
 );
